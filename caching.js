@@ -142,7 +142,7 @@ mongoose.connect('mongodb://localhost/FoodManager');
 var RecipeFinder =
 {
   counting:function () {
-    rand = (Math.random()*10000)+20000;
+    rand = (Math.random()*10000)+5000;
     recipesDB.random({cache:false},function (err,record) {
       console.log(record.name)
       if (err) return console.log(err);
