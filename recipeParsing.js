@@ -290,7 +290,7 @@ var RecipeFinder =
       "type":"ingredient",
       "parser":function(text) {
         ingredient = {
-          fullText:""
+          fullText:"",
           quantity:0,
           name:"",
           order:0,
