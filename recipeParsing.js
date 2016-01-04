@@ -578,13 +578,14 @@ var RecipeFinder =
         })
         // I don't think that this one is needed
         // recipe.save(function (err) {})
-    } catch (e) {
-      console.log(recipe.name);
-      console.error(e);
-    } finally {
+      } catch (e) {
+        console.log(recipe.name);
+        console.error(e);
+      } finally {
 
-    }
-  })
+      }
+    })
+  }
 };
 try {
   RecipeFinder.recipeParser()
