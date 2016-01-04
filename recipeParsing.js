@@ -290,6 +290,7 @@ var RecipeFinder =
       "type":"ingredient",
       "parser":function(text) {
         ingredient = {
+          fullText:""
           quantity:0,
           name:"",
           order:0,
@@ -297,6 +298,7 @@ var RecipeFinder =
           measurement:"",
           other:[]
         }
+        ingredient.fullText = text
         quantityRE = /([0-9]*)?[ ]?([0-9]*\/[0-9]*)?/
         obj = text.match(quantityRE)[0].trim()
         objSplit = obj.split(" ")
@@ -321,7 +323,6 @@ var RecipeFinder =
             ingredient.measurement = "other";
           }
         }
-
         if(ingredient.measurement == "other"){
           ingredient.other = Words
         } else {
@@ -574,31 +575,12 @@ var RecipeFinder =
             RecipeFinder.recipeParser()
           }
         })
-        recipe.save(function (err) {})
+        // I don't think that this one is needed
+        // recipe.save(function (err) {})
     });
-  },
-  counting:function () {
-    rand = (Math.random()*10000)+20000;
-    recipesDB.random({cache:false},function (err,record) {
-      console.log(record.name)
-      if (err) return console.log(err);
-      request(record.url, function (error, response, body) {
-        var $ = cheerio.load(body)
-        bodyInsert = $('article').html()
-        record.body = bodyInsert
-        record.cachedDate = new Date().toISOString();
-        record.save(function (err) {})
-      })
-      record.cache = true
-      record.save(function (err) {})
-    })
-    setTimeout(function (){
-      RecipeFinder.counting()
-    },rand)
   }
 };
 try {
-  // RecipeFinder.counting()
   RecipeFinder.recipeParser()
 } catch (e) {
 
