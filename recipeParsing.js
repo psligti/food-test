@@ -528,6 +528,7 @@ var RecipeFinder =
   recipeParser:function () {
     recipesDB.random({cache:true,parsed:false},function (err,recipe) {
       if (err) return console.log(err);
+      if (recipe) {
         var $ = cheerio.load(recipe.body)
         items = $("[itemprop]")
         items.each(function(i,elem) {
@@ -577,7 +578,8 @@ var RecipeFinder =
         })
         // I don't think that this one is needed
         // recipe.save(function (err) {})
-    });
+      });
+    }
   }
 };
 try {
