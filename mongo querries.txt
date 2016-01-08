@@ -1,0 +1,13 @@
+Useful Mongo queries
+
+db.recipelists.distinct("recipe.ingredients.other",{"recipe.ingredients.1": {$exists: true}})
+db.recipelists.find({"recipe.ingredients.1": {$exists: true}},{"recipe.ingredients.other":1})
+db.recipelists.find({$where: "recipe.ingredients.length >1"})
+db.recipelists.find({recipe:{$exists:true}},{"recipe"})
+db.recipelists.distinct("recipe.ingredients.other"}
+db.recipelists.aggregate([{$unwind:"$recipe.ingredients"},{$unwind:"$recipe.ingredients.other"},{$group :{_id:"$recipe.ingredients.other",recipes:{$push:{name:"$$ROOT.name",ingredient:"$$ROOT.recipe.ingredients.fullText"}}}}])
+// puts together a distinct list of words used in ingredients list
+// unwind creates separate documents out of arrays
+// the double unwing is becuase it is nested arrays
+db.recipelists.aggregate([{$unwind:"$recipe.ingredients"}])
+db.findOne({"recipe.ingredients":{$exists:true}},{"recipe.ingredients.other":1})
