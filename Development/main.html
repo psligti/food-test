@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="App">
+  <head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.sbsbars.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="js/plugins/flot/jquery.flot.time.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="js/charts.js"></script>
+    <script type="text/javascript" src="js/chartDirective.js"></script>
+    <script type="text/javascript" src="js/metricsDirective.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div ng-include="'sideBar.html'"></div>
+      <div id="page-wrapper" class="gray-bg">
+        <ng-include src="'header.html'"></ng-include>
+        <ng-include src="'content.html'"></ng-include>
+        <ng-include src="'footer.html'"></ng-include>
+      </div>
+    </div>
+  </body>
+</html>
