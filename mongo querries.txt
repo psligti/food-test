@@ -11,3 +11,5 @@ db.recipelists.aggregate([{$unwind:"$recipe.ingredients"},{$unwind:"$recipe.ingr
 // the double unwing is becuase it is nested arrays
 db.recipelists.aggregate([{$unwind:"$recipe.ingredients"}])
 db.findOne({"recipe.ingredients":{$exists:true}},{"recipe.ingredients.other":1})
+// Shows which databases are available
+show databases
